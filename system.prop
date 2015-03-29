@@ -1,0 +1,4 @@
+#
+# system.prop
+#
+wifi.interface=wlan0

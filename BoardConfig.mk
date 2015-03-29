@@ -1,0 +1,131 @@
+# inherit from the proprietary version
+-include vendor/oppo/r5/BoardConfigVendor.mk
+
+TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := r5
+TARGET_OTA_ASSERT_DEVICE := r5,R5,R8106
+
+# Platform
+TARGET_BOARD_PLATFORM := msm8916
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno405
+
+# Architecture
+TARGET_CPU_VARIANT := krait
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_SMP := true
+
+# Krait optimizations
+TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
+
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_CUSTOM_BOOTIMG_MK := device/oppo/r5/mkbootimg.mk
+
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00F00000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00F00000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1388314624
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 3221225472
+BOARD_FLASH_BLOCK_SIZE := 131072
+
+# global
+TARGET_SPECIFIC_HEADER_PATH := device/oppo/r5/include
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_USES_QCOM_BSP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
+
+# Display
+TARGET_QCOM_DISPLAY_VARIANT := caf-bfam
+USE_OPENGL_RENDERER := true
+TARGET_USES_ION := true
+TARGET_USES_C2D_COMPOSITION := true
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+
+# Time Daemon
+BOARD_USES_QC_TIME_SERVICES := true
+
+# Audio/media
+TARGET_QCOM_AUDIO_VARIANT := caf-bfam
+TARGET_QCOM_MEDIA_VARIANT := caf-bfam
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
+# audio
+BOARD_USES_ALSA_AUDIO:= true
+AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
+AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
+AUDIO_FEATURE_ENABLED_EXTN_POST_PROC := true
+AUDIO_FEATURE_ENABLED_FLUENCE := true
+AUDIO_FEATURE_ENABLED_HFP := true
+AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
+AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
+AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
+AUDIO_FEATURE_ENABLED_USBAUDIO := true
+AUDIO_FEATURE_ENABLED_COMPRESS_CAPTURE := true
+AUDIO_FEATURE_ENABLED_INCALL_MUSIC := true
+
+# Camera
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+USE_DEVICE_SPECIFIC_CAMERA := true
+
+# Disable secure discard because it's SLOW
+BOARD_SUPPRESS_SECURE_ERASE := true
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
+BLUETOOTH_HCI_USE_MCT := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oppo/r5/bluetooth
+
+# Wifi
+BOARD_HAS_QCOM_WLAN              := true
+BOARD_WLAN_DEVICE                := qcwcn
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+WIFI_DRIVER_FW_PATH_STA          := "sta"
+WIFI_DRIVER_FW_PATH_AP           := "ap"
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME          := "wlan"
+
+BOARD_EGL_CFG := device/oppo/r5/configs/egl.cfg
+
+# Compatibility with pre-kitkat Qualcomm sensor HALs
+SENSORS_NEED_SETRATE_ON_ENABLE := true
+
+# charger
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+
+# power hal
+#TARGET_PROVIDES_POWERHAL := true
+
+# SELinux
+#-include device/qcom/sepolicy/sepolicy.mk
+
+#BOARD_SEPOLICY_DIRS += \
+#s    device/oppo/n1/sepolicy
+
+# Recovery:Start
+
+# Use this flag if the board has a ext4 partition larger than 2gb
+BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_USERIMAGES_USE_EXT4 := true
+
+# TWRP specific build flags
+TARGET_RECOVERY_FSTAB = device/oppo/r5/configs/fstab.qcom
+TW_THEME := portrait_hdpi
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+TW_NO_USB_STORAGE := true
+TW_INCLUDE_JB_CRYPTO := false
+TW_NO_SCREEN_BLANK := true
+TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+TW_INCLUDE_L_CRYPTO := true
+TW_TARGET_USES_QCOM_BSP := true
+BOARD_HAS_NO_REAL_SDCARD := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
