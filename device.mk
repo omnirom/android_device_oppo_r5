@@ -15,6 +15,9 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_CHARACTERISTICS := nosdcard
 
 PRODUCT_PACKAGES += \
+    charger_res_images
+
+PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 #Default USB mount

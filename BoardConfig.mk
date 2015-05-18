@@ -21,8 +21,9 @@ TARGET_CPU_SMP := true
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
 
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
+BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_CUSTOM_BOOTIMG_MK := device/oppo/r5/mkbootimg.mk
 
@@ -39,7 +40,7 @@ TARGET_USES_QCOM_BSP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
 
 # Display
-TARGET_QCOM_DISPLAY_VARIANT := caf-bfam
+TARGET_QCOM_DISPLAY_VARIANT := caf
 USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
@@ -49,8 +50,8 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 BOARD_USES_QC_TIME_SERVICES := true
 
 # Audio/media
-TARGET_QCOM_AUDIO_VARIANT := caf-bfam
-TARGET_QCOM_MEDIA_VARIANT := caf-bfam
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # audio
