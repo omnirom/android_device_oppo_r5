@@ -37,9 +37,12 @@ $(call inherit-product, device/oppo/r5/device.mk)
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := omni_r5
 PRODUCT_DEVICE := r5
-PRODUCT_BRAND := Oppo
-PRODUCT_MODEL := R5
-PRODUCT_MANUFACTURER := Oppo
+PRODUCT_BRAND := OPPO
+PRODUCT_MANUFACTURER := OPPO
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_FINGERPRINT="OPPO/R8106/R5:4.4.4/KTU84P/1413614073:user/release-keys" \
+    PRIVATE_BUILD_DESC="msm8916_32-user 4.4.4 KTU84P eng.root.20150422 release-keys"
 
 # Inline kernel
 TARGET_KERNEL_SOURCE := kernel/oppo/msm8916
